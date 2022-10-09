@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+}
+
+.container {
+    display: grid;
+    background-color: rgb(0, 225, 255);
+    padding: 20px;
+    margin: 5em;
+}
+
+.square {
+    padding: 20px;
+    background-color: #379AD6;
+    border: 1px solid white;
+}
