@@ -1,25 +1,43 @@
-const container = document.querySelector('.container');
-let square = document.querySelectorAll('.square');
+const gridContainer = document.querySelector('.gridContainer');
+
+let slider = document.querySelector('.slider');
+let gridSize = document.querySelector('.gridSize');
+let row = 16;
+let column = 16;
+
+// Set up slider value and grid Size
+gridSize.innerHTML = slider.value;
+slider.addEventListener('input', () => {
+    gridSize.innerHTML = slider.value;
+    row = slider.value;
+    column = slider.value;
+    startSketch();
+});
+
+function clearGrid() {
+    while (gridContainer.firstChild) { 
+        gridContainer.removeChild(gridContainer.firstChild); 
+    }
+}
 
 // Sets up css container's Grid to have the input # of rows and columns
 function setGridXX(row, column) {
-    container.style.cssText = `grid-template-columns: repeat(${column}, 1fr); 
-    grid-template-rows: repeat(${row}, 1fr);`;
+    gridContainer.style.cssText = `grid-template-rows: repeat(${row}, 1fr);
+    grid-template-columns: repeat(${column},1fr);`;
 }
 
 function createSquares(numSquares) {
     for(let i = 0; i < numSquares; i++) {
         let div = document.createElement('div');
         div.classList.add("square");
-        container.appendChild(div);
+        gridContainer.appendChild(div);
     }
 }
 
 function startSketch() {
-    let row = 16;
-    let column = 16;
     let numSquares = row * column;
 
+    clearGrid();
     createSquares(numSquares);
     setGridXX(row, column);
 

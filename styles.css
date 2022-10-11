@@ -6,19 +6,57 @@ html, body {
     margin: 0;
 }
 
-.container {
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gridContainer {
     display: grid;
-    background-color: rgb(0, 225, 255);
+    background-color: rgb(232, 31, 84);
     padding: 20px;
-    margin: 5em;
+    margin: 1em;
+    width: 500px;
+    height: 500px;
 }
 
 .square {
-    padding: 20px;
-    background-color: #379AD6;
-    border: 1px solid white;
+    background-color: #78afd0;
+    border: none;
+    /* border: 1px solid white; */
 }
 
-/* .square:hover {
-    background-color: black;
-}  */
+/* GRID RANGE-SLIDER */
+.slideContainer {
+    width: 100%;
+}
+.slider {
+    appearance: none;
+    background: #d3d3d3;
+    border-radius: 20px;
+    height: 10px;
+    width: 100%;
+    opacity: 0.7;
+}
+.slider:hover {
+    opacity: 1; 
+}
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #e23b28;
+    cursor: pointer;
+}
+.gridSize {
+    background-color: #78afd0;
+    text-align: center;
+    display: block;
+    padding: .5em;
+    margin: 1em;
+    width: 5em;
+}
