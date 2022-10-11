@@ -1,17 +1,24 @@
 const gridContainer = document.querySelector('.gridContainer');
-
 let slider = document.querySelector('.slider');
 let gridSize = document.querySelector('.gridSize');
+let colorChoice = document.querySelector('#colorPicker');
+
 let row = 16;
 let column = 16;
+let color = colorChoice.value;
 
-// Set up slider value and grid Size
-gridSize.innerHTML = slider.value;
+// Setup for slider's range value and Grid Size
+gridSize.innerHTML = `${slider.value} x ${slider.value}`;
 slider.addEventListener('input', () => {
-    gridSize.innerHTML = slider.value;
+    gridSize.innerHTML = `${slider.value} x ${slider.value}`;
     row = slider.value;
     column = slider.value;
     startSketch();
+});
+
+// Setup for changing color
+colorChoice.addEventListener('input', () => {
+    color = colorChoice.value;
 });
 
 function clearGrid() {
@@ -44,7 +51,8 @@ function startSketch() {
     // Listens to user's mouse hover over individual squares and change the background color
     let squares = document.querySelectorAll('.square');
     squares.forEach(square => square.addEventListener('mouseover', function (e) {
-        square.style.backgroundColor = "black";
+        square.style.backgroundColor = color;
+        console.log(color);
     }));
 }
 
