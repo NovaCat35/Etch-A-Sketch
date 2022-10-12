@@ -13,62 +13,93 @@ main {
     align-items: center;
 }
 
+header {
+    font-size: 1.5em;
+}
+
+.mainContent {
+    display: flex;
+}
+
+/***** COLOR SELECTORS *****/
+.colorChoices {
+    margin: 4em;
+    margin-left: .5em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
 .colorContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 #colorPicker {
     /* appearance: none; */
     width: 100px;
     height: 100px;
     border: none;
     background-color: transparent;
+    margin-bottom: 10px;
 }
 #colorPicker::-webkit-color-swatch {
     border-radius: 50%;
     border: none;
 }
 
-.colorModeBtn {
+button {
+    width: 10em;
     padding: .5em;
     border: 1px solid black;
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0);
     transition: 0.35s ease-out;
 }
-.colorModeBtn:hover {
+button:hover {
     background-color: #161616;
     color: rgb(234, 234, 234);
     transform: scale(1.1);
 }
 
-/* GRID */
-.gridContainer {
-    display: grid;
-    background-color: rgb(232, 31, 84);
-    padding: 20px;
-    margin: 1em;
-    width: 500px;
-    height: 500px;
-}
-.square {
-    background-color: #78afd0;
-    border: none;
-}
-
-/* GRID RANGE-SLIDER */
-.slideContainer {
+/***** BOARD & GRID *****/
+.board {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 1.2em solid rgb(227, 61, 61);
+    border-bottom: none;
+    border-radius: 1.5em;
+}
+.boardBottom {
+    display: flex;
+    justify-content: center;
+    border: none;
+    background-color: rgb(227, 61, 61);
+    width: 100%;
+}
+.gridContainer {
+    display: grid;
+    width: 550px;
+    height: 550px;
+}
+.square {
+    background-color: #f5f5f5;
+    border: none;
+    margin: 0;
+}
 
-    width: 15em;
+/***** GRID RANGE-SLIDER *****/
+.slideContainer {
+    background: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1em;
+    width: 18em;
 }
 .slider {
     appearance: none;
-    background: #d3d3d3;
+    background: #f5f5f5;
     border-radius: 20px;
     height: 10px;
     width: 100%;
@@ -83,11 +114,20 @@ main {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #e23b28;
+    background: #6b9edd;
     cursor: pointer;
 }
 .gridSize {
+    color: white;
+    font-size: 17px;
     text-align: center;
     padding: .5em;
     width: 5em;
+}
+
+.toolBox {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: .5em;
 }

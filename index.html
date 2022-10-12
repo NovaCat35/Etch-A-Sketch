@@ -9,19 +9,32 @@
 </head>
 <body>
     <main>
-        <h1>Etch A Sketch</h1>
+        <header>
+            <h1>Etch A Sketch</h1>   
+        </header>
         
-        <div class="colorContainer">
-            <input type="color" id="colorPicker">
-            <button class="colorModeBtn">Color Mode</button>
+        <div class="mainContent">
+            <div class="colorChoices">
+                <div class="colorContainer">
+                    <input type="color" id="colorPicker">
+                    <button class="colorModeBtn">Color Mode </button>
+                </div>
+                <button class="rainbowBtn">Rainbow</button>
+            </div>
+
+            <div class="board">
+                <div class="gridContainer">
+                </div>
+                <div class="boardBottom">
+                    <div class="slideContainer">
+                        <div class="gridSize"></div>
+                        <input type="range" min="1" max="64" value="16" class="slider">
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="gridContainer">
-        </div>
-
-        <div class="slideContainer">
-            <div class="gridSize"></div>
-            <input type="range" min="1" max="64" value="16" class="slider">
+        <div class="toolBox">
         </div>
     </main>
     

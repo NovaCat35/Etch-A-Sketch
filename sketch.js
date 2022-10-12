@@ -2,6 +2,8 @@ const gridContainer = document.querySelector('.gridContainer');
 let slider = document.querySelector('.slider');
 let gridSize = document.querySelector('.gridSize');
 let colorChoice = document.querySelector('#colorPicker');
+let colorModeBtn = document.querySelector('.colorModeBtn');
+let rainbowBtn = document.querySelector('.rainbowBtn');
 
 let row = 16;
 let column = 16;
