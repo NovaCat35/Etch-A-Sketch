@@ -2,9 +2,8 @@ const gridContainer = document.querySelector('.gridContainer');
 let slider = document.querySelector('.slider');
 let gridSize = document.querySelector('.gridSize');
 let colorChoice = document.querySelector('#colorPicker');
-let colorModeBtn = document.querySelector('.colorModeBtn');
-let rainbowBtn = document.querySelector('.rainbowBtn');
 
+// initial setup
 let row = 16;
 let column = 16;
 let color = colorChoice.value;
@@ -17,6 +16,23 @@ slider.addEventListener('input', () => {
     column = slider.value;
     startSketch();
 });
+
+
+let colorModeBtn = document.querySelector('.colorModeBtn');
+let rainbowBtn = document.querySelector('.rainbowBtn');
+let buttons = document.querySelectorAll('button')
+let btnSelected = "colorModeBtn";
+eval(btnSelected).classList.add('active'); //eval allows me to call the object instead of string value
+
+// Setup for toggling buttons
+buttons.forEach(btn => btn.addEventListener('click', function(event) {
+    eval(btnSelected).classList.remove('active'); 
+
+    btnSelected = event.target.classList.value;
+    btn.classList.add('active');
+}));
+
+
 
 // Setup for changing color
 colorChoice.addEventListener('input', () => {
@@ -52,9 +68,19 @@ function startSketch() {
 
     // Listens to user's mouse hover over individual squares and change the background color
     let squares = document.querySelectorAll('.square');
-    squares.forEach(square => square.addEventListener('mouseover', function (e) {
-        square.style.backgroundColor = color;
-        console.log(color);
+    squares.forEach(square => square.addEventListener('mouseover', function () {
+        switch(btnSelected) {
+            case 'colorModeBtn':
+                color = colorChoice.value;
+                square.style.backgroundColor = color;
+                break;
+            case 'rainbowBtn':
+                color = 'blue';
+                square.style.backgroundColor = color;
+                break;
+            default:
+                square.style.backgroundColor = color;
+        }
     }));
 }
 
