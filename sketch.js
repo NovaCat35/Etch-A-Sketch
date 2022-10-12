@@ -17,7 +17,6 @@ slider.addEventListener('input', () => {
     startSketch();
 });
 
-
 let colorModeBtn = document.querySelector('.colorModeBtn');
 let rainbowBtn = document.querySelector('.rainbowBtn');
 let buttons = document.querySelectorAll('button')
@@ -32,14 +31,18 @@ buttons.forEach(btn => btn.addEventListener('click', function(event) {
     btn.classList.add('active');
 }));
 
-
-
 // Setup for changing color
 colorChoice.addEventListener('input', () => {
     color = colorChoice.value;
 });
 
-function clearGrid() {
+
+function generateRainbow() {
+    let randomColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+    return randomColor;
+}
+
+function removeGrid() {
     while (gridContainer.firstChild) { 
         gridContainer.removeChild(gridContainer.firstChild); 
     }
@@ -62,7 +65,7 @@ function createSquares(numSquares) {
 function startSketch() {
     let numSquares = row * column;
 
-    clearGrid();
+    removeGrid();
     createSquares(numSquares);
     setGridXX(row, column);
 
@@ -75,7 +78,8 @@ function startSketch() {
                 square.style.backgroundColor = color;
                 break;
             case 'rainbowBtn':
-                color = 'blue';
+                color = generateRainbow();
+                console.log(color);
                 square.style.backgroundColor = color;
                 break;
             default:

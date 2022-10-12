@@ -21,7 +21,7 @@ header {
     display: flex;
 }
 
-/***** COLOR SELECTORS *****/
+/***** COLOR PICKER & CONTAINER *****/
 .colorChoices {
     margin: 4em;
     margin-left: .5em;
@@ -47,6 +47,7 @@ header {
     border: none;
 }
 
+/***** BUTTONS *****/
 button {
     width: 10em;
     padding: .5em;
