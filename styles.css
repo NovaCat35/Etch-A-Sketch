@@ -70,6 +70,8 @@ button:active {
     transform: translateY(10px);
 }  
 .clearBtn {
+    background-color: #0ba2c4;
+    color: rgb(255, 237, 205);
     position: absolute;
     left: 85%;
     display: flex;
@@ -78,10 +80,17 @@ button:active {
     height: 58px;
     width: 58px;
     border-radius: 50%;
+    box-shadow: 1px 2px 1px 1px black;
 }
-.clearBtn.active {
-    background-color: red;
+.clearBtn:hover {
+    color:aliceblue;
+    background-color: #0094f0;
+    transform: scale(1);
+    transform: translateY(1px);
 }
+.clearBtn:active {
+    transform: translateY(10px);
+}  
 
 /***** BOARD & GRID *****/
 .board {

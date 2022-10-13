@@ -38,10 +38,10 @@ buttons.forEach(btn => btn.addEventListener('click', function(event) {
     }
 }));
 
-// Setup for changing color
-colorChoice.addEventListener('input', () => {
-    color = colorChoice.value;
-});
+// Setup for changing color (Color MODE)
+// colorChoice.addEventListener('input', () => {
+//     color = colorChoice.value;
+// });
 
 
 function generateRainbow() {
