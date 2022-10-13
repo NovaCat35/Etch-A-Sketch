@@ -3,7 +3,7 @@
 Etch-a-Sketch created using HTML/CSS and JS.
 
 -Color Mode [DONE]
--Rainbow
+-Rainbow [DONE]
 -Warm Color
 -Cool Color
 

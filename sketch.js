@@ -19,16 +19,23 @@ slider.addEventListener('input', () => {
 
 let colorModeBtn = document.querySelector('.colorModeBtn');
 let rainbowBtn = document.querySelector('.rainbowBtn');
+let clearBtn = document.querySelector('.clearBtn');
 let buttons = document.querySelectorAll('button')
 let btnSelected = "colorModeBtn";
 eval(btnSelected).classList.add('active'); //eval allows me to call the object instead of string value
 
-// Setup for toggling buttons
+// Show selected buttons & setup btnSelected
 buttons.forEach(btn => btn.addEventListener('click', function(event) {
     eval(btnSelected).classList.remove('active'); 
 
-    btnSelected = event.target.classList.value;
-    btn.classList.add('active');
+    let clickBtn = event.target.classList.value;
+    if(clickBtn != "clearBtn") {
+        btnSelected = clickBtn;
+        btn.classList.add('active');
+    } else {
+        clearGrid();
+        eval(btnSelected).classList.add('active');
+    }
 }));
 
 // Setup for changing color
@@ -38,8 +45,15 @@ colorChoice.addEventListener('input', () => {
 
 
 function generateRainbow() {
-    let randomColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+    let randomColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
     return randomColor;
+}
+
+const collection = gridContainer.children;
+function clearGrid() {
+    for(let i = 0; i < collection.length; i++) {
+        collection[i].style.backgroundColor = '#f5f5f5';
+    }
 }
 
 function removeGrid() {
