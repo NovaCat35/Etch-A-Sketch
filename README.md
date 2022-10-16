@@ -2,10 +2,17 @@
 
 Etch-a-Sketch created using HTML/CSS and JS.
 
--Color Mode [DONE]
--Rainbow [DONE]
--Warm Color
--Cool Color
+COLOR SECTION
+- Color Mode [DONE]
+- Rainbow [DONE]
+- Warm Color [DONE]
+- Cool Color [DONE]
 
--Eraser
--Clear
+TOOLS
+- Hover/Click 
+- Eraser [TO DO]
+- Clear [DONE]
+
+Other utilities
+- Save Progress
+- Save Art

@@ -19,10 +19,12 @@ slider.addEventListener('input', () => {
 
 let colorModeBtn = document.querySelector('.colorModeBtn');
 let rainbowBtn = document.querySelector('.rainbowBtn');
+let warmBtn = document.querySelector('.warmBtn');
+let coolBtn = document.querySelector('.coolBtn');
 let clearBtn = document.querySelector('.clearBtn');
 let buttons = document.querySelectorAll('button')
 let btnSelected = "colorModeBtn";
-eval(btnSelected).classList.add('active'); //eval allows me to call the object instead of string value
+eval(btnSelected).classList.add('active'); //eval() allows me to call the object instead of string value
 
 // Show selected buttons & setup btnSelected
 buttons.forEach(btn => btn.addEventListener('click', function(event) {
@@ -38,15 +40,26 @@ buttons.forEach(btn => btn.addEventListener('click', function(event) {
     }
 }));
 
-// Setup for changing color (Color MODE)
-// colorChoice.addEventListener('input', () => {
-//     color = colorChoice.value;
-// });
-
-
 function generateRainbow() {
+    // Generate random HEX value
     let randomColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
     return randomColor;
+}
+
+function rand(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function generateWarm() {
+    // hue: red(0%)->orange(30%)->yellow(60%)->green(120%)...rose(330%) | saturation: 35-90 | lightness: lighter range
+    let hsl1 = "hsl(" + rand(0,100) + ", "+ rand(35, 90) + "%, "+ rand(40,90) +"%)";
+    return hsl1;
+}
+
+function generateCool() {
+    // hue: green(120%)->blue(240%)->purple(270%) | saturation: 40-90 | lightness: darker range
+    var hsl2 = "hsl(" + rand(170,250) + ", "+ rand(40, 90) + "%, "+ rand(20,80) +"%)";
+    return hsl2;
 }
 
 const collection = gridContainer.children;
@@ -93,7 +106,14 @@ function startSketch() {
                 break;
             case 'rainbowBtn':
                 color = generateRainbow();
-                console.log(color);
+                square.style.backgroundColor = color;
+                break;
+            case 'warmBtn':
+                color = generateWarm();
+                square.style.backgroundColor = color;
+                break;
+            case 'coolBtn':
+                color = generateCool();
                 square.style.backgroundColor = color;
                 break;
             default:
