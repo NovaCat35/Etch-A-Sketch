@@ -17,28 +17,41 @@ slider.addEventListener('input', () => {
     startSketch();
 });
 
+// Color & Eraser setup
 let colorModeBtn = document.querySelector('.colorModeBtn');
 let rainbowBtn = document.querySelector('.rainbowBtn');
 let warmBtn = document.querySelector('.warmBtn');
 let coolBtn = document.querySelector('.coolBtn');
 let clearBtn = document.querySelector('.clearBtn');
-let buttons = document.querySelectorAll('button')
+let eraser = document.querySelector('.eraser');
+let buttons = document.querySelectorAll('button');
 let btnSelected = "colorModeBtn";
 eval(btnSelected).classList.add('active'); //eval() allows me to call the object instead of string value
+eraser.addEventListener('animationend', function () { this.style.animation = '' });
 
 // Show selected buttons & setup btnSelected
 buttons.forEach(btn => btn.addEventListener('click', function(event) {
     eval(btnSelected).classList.remove('active'); 
 
     let clickBtn = event.target.classList.value;
-    if(clickBtn != "clearBtn") {
+    if(clickBtn != "clearBtn" && clickBtn != "eraser") {
         btnSelected = clickBtn;
         btn.classList.add('active');
-    } else {
+    } else if (clickBtn == "clearBtn") {
         clearGrid();
-        eval(btnSelected).classList.add('active');
+        if(btnSelected != "eraser"){
+            eval(btnSelected).classList.add('active');
+        }
+    } else {
+        eraser.style.animation = "shake2 .5s forwards";
+        btnSelected = clickBtn;
     }
 }));
+
+eraser.addEventListener('click', () => {
+    eraser.addEventListener('animationend', function () { this.style.animation = '' });
+    buttons
+});
 
 function generateRainbow() {
     // Generate random HEX value
@@ -52,7 +65,7 @@ function rand(min, max){
 
 function generateWarm() {
     // hue: red(0%)->orange(30%)->yellow(60%)->green(120%)...rose(330%) | saturation: 35-90 | lightness: lighter range
-    let hsl1 = "hsl(" + rand(0,100) + ", "+ rand(35, 90) + "%, "+ rand(40,90) +"%)";
+    let hsl1 = "hsl(" + rand(0,100) + ", "+ rand(35, 100) + "%, "+ rand(40,90) +"%)";
     return hsl1;
 }
 
@@ -96,7 +109,7 @@ function startSketch() {
     createSquares(numSquares);
     setGridXX(row, column);
 
-    // Listens to user's mouse hover over individual squares and change the background color
+    // Listens to user's mouse hover over squares & change the background color base on selected button
     let squares = document.querySelectorAll('.square');
     squares.forEach(square => square.addEventListener('mouseover', function () {
         switch(btnSelected) {
@@ -116,6 +129,9 @@ function startSketch() {
                 color = generateCool();
                 square.style.backgroundColor = color;
                 break;
+            case 'eraser':
+                color = "#f5f5f5";
+                square.style.backgroundColor = color;
             default:
                 square.style.backgroundColor = color;
         }

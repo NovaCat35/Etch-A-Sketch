@@ -7,7 +7,6 @@ html, body {
 }
 
 main {
-    height: 100vh;
     background-color: antiquewhite;
     display: flex;
     flex-direction: column;
@@ -37,13 +36,13 @@ header h1{
 /***** COLOR PICKER & CONTAINER *****/
 .colorChoices {
     margin: 4em;
-    margin-left: .5em;
+    margin-top: 5em;
     display: flex;
     align-items: center ;
     flex-direction: column;
     gap: 2em;
 }
-.colorContainer {
+.colorModeContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -99,16 +98,41 @@ button:active {
 .clearBtn:hover {
     color:aliceblue;
     background-color: #0094f0;
-    transform: scale(1);
-    transform: translateY(1px);
+    transform: translateY(2px);
 }
 .clearBtn:active {
     transform: translateY(10px);
-}  
+} 
+.eraser {
+    font-family: 'Monoton', cursive;
+    font-size: 1.4em;
+    color: rgb(197, 40, 40);
+    background-color: pink;
+    padding-left: 70px;
+    padding-right: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 15px 0px rgb(220, 65, 91), -5px 10px 0px 5px rgb(195, 7, 39), 5px 10px 0px 5px rgb(195, 7, 39);
+    height: 5em;
+    width: 5em;
+}
+.eraser:hover {
+    animation: shake .8s infinite; 
+    /* animation: shake2 .5s forwards; */
+    background-color: pink;
+    color: rgb(197, 40, 40);
+}
+
 
 /***** BOARD & GRID *****/
 .board {
+    margin-top: 3em;
+    margin-bottom: 3em;
     position: relative;
+    height: 41em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -173,9 +197,29 @@ button:active {
     width: 5em;
 }
 
-.toolBox {
+/* .toolBox {
     margin-top: 15px;
     display: flex;
     align-items: center;
     gap: .5em;
+} */
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@keyframes shake2 {
+    0%, 30%, 60%, 90% { transform: translateX(-5px);}
+    10%, 40%, 70%, 100% { transform: translateX(1px);}
+    20%, 50%, 80% { transform: translateX(5px);}
 }
