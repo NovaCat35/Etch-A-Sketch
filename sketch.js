@@ -48,11 +48,6 @@ buttons.forEach(btn => btn.addEventListener('click', function(event) {
     }
 }));
 
-eraser.addEventListener('click', () => {
-    eraser.addEventListener('animationend', function () { this.style.animation = '' });
-    buttons
-});
-
 function generateRainbow() {
     // Generate random HEX value
     let randomColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);

@@ -9,8 +9,8 @@ COLOR SECTION
 - Cool Color [DONE]
 
 TOOLS
-- Hover/Click 
-- Eraser [TO DO]
+- Hover/Click [to do]
+- Eraser [DONE]
 - Clear [DONE]
 
 Other utilities

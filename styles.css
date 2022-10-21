@@ -142,6 +142,7 @@ button:active {
     border-radius: 1.5em;
 }
 .boardBottom {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -197,12 +198,48 @@ button:active {
     width: 5em;
 }
 
-/* .toolBox {
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    gap: .5em;
-} */
+/***** TOGGLE SWITCH *****/
+.switch {
+    position: absolute;
+    left: 1em;
+    top: 35px;
+    width: 70px;
+    height: 30px;
+    /* background:rgb(251, 193, 18); */
+}
+input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+.slideKnob {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:rgb(146, 197, 231);
+    border-radius: 90px;
+}
+.slideKnob:before {
+    position: absolute;
+    content: '';
+    height: 22px;
+    width: 22px;
+    top: 4px;
+    left: 4px;
+    background-color: rgb(227, 220, 88);
+    border-radius: 100px;
+    transition: 0.3s;
+}
+input[type=checkbox]:checked + .slideKnob {
+    background-color: #0094f0;
+}
+input[type=checkbox]:checked + .slideKnob:before {
+    left: 22px;
+    transform: translateX(100%);
+}
+
 
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
