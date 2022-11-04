@@ -1,4 +1,4 @@
-const gridContainer = document.querySelector('.gridContainer');
+const GRID_CONTAINER = document.querySelector('.gridContainer');
 let slider = document.querySelector('.slider');
 let gridSize = document.querySelector('.gridSize');
 let colorChoice = document.querySelector('#colorPicker');
@@ -17,7 +17,7 @@ slider.addEventListener('input', () => {
     startSketch();
 });
 
-// Color & Eraser setup
+// Color, Btn Selected, and Eraser setup
 let colorModeBtn = document.querySelector('.colorModeBtn');
 let rainbowBtn = document.querySelector('.rainbowBtn');
 let warmBtn = document.querySelector('.warmBtn');
@@ -48,6 +48,31 @@ buttons.forEach(btn => btn.addEventListener('click', function(event) {
     }
 }));
 
+function changeColor(e) {
+    switch(btnSelected) {
+        case 'colorModeBtn':
+            color = colorChoice.value;
+            e.target.style.backgroundColor = color;
+            break;
+        case 'rainbowBtn':
+            color = generateRainbow();
+            e.target.style.backgroundColor = color;
+            break;
+        case 'warmBtn':
+            color = generateWarm();
+            e.target.style.backgroundColor = color;
+            break;
+        case 'coolBtn':
+            color = generateCool();
+            e.target.style.backgroundColor = color;
+            break;
+        case 'eraser':
+            color = "#f5f5f5";
+            e.target.style.backgroundColor = color;
+        default:
+            e.target.style.backgroundColor = color;
+    }
+}
 function generateRainbow() {
     // Generate random HEX value
     let randomColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
@@ -70,7 +95,7 @@ function generateCool() {
     return hsl2;
 }
 
-const collection = gridContainer.children;
+const collection = GRID_CONTAINER.children;
 function clearGrid() {
     for(let i = 0; i < collection.length; i++) {
         collection[i].style.backgroundColor = '#f5f5f5';
@@ -78,14 +103,14 @@ function clearGrid() {
 }
 
 function removeGrid() {
-    while (gridContainer.firstChild) { 
-        gridContainer.removeChild(gridContainer.firstChild); 
+    while (GRID_CONTAINER.firstChild) { 
+        GRID_CONTAINER.removeChild(GRID_CONTAINER.firstChild); 
     }
 }
 
 // Sets up css container's Grid to have the input # of rows and columns
 function setGridXX(row, column) {
-    gridContainer.style.cssText = `grid-template-rows: repeat(${row}, 1fr);
+    GRID_CONTAINER.style.cssText = `grid-template-rows: repeat(${row}, 1fr);
     grid-template-columns: repeat(${column},1fr);`;
 }
 
@@ -93,7 +118,7 @@ function createSquares(numSquares) {
     for(let i = 0; i < numSquares; i++) {
         let div = document.createElement('div');
         div.classList.add("square");
-        gridContainer.appendChild(div);
+        GRID_CONTAINER.appendChild(div);
     }
 }
 
@@ -106,31 +131,7 @@ function startSketch() {
 
     // Listens to user's mouse hover over squares & change the background color base on selected button
     let squares = document.querySelectorAll('.square');
-    squares.forEach(square => square.addEventListener('mouseover', function () {
-        switch(btnSelected) {
-            case 'colorModeBtn':
-                color = colorChoice.value;
-                square.style.backgroundColor = color;
-                break;
-            case 'rainbowBtn':
-                color = generateRainbow();
-                square.style.backgroundColor = color;
-                break;
-            case 'warmBtn':
-                color = generateWarm();
-                square.style.backgroundColor = color;
-                break;
-            case 'coolBtn':
-                color = generateCool();
-                square.style.backgroundColor = color;
-                break;
-            case 'eraser':
-                color = "#f5f5f5";
-                square.style.backgroundColor = color;
-            default:
-                square.style.backgroundColor = color;
-        }
-    }));
+    squares.forEach(square => square.addEventListener('mouseover', changeColor));
 }
 
 startSketch();

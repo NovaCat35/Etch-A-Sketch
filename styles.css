@@ -7,7 +7,7 @@ html, body {
 }
 
 main {
-    background-color: antiquewhite;
+    background-color: #ffe6e6;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -218,7 +218,7 @@ input[type=checkbox] {
     left: 0;
     right: 0;
     bottom: 0;
-    background:rgb(146, 197, 231);
+    background:#6b9edd;
     border-radius: 90px;
 }
 .slideKnob:before {
@@ -228,7 +228,7 @@ input[type=checkbox] {
     width: 22px;
     top: 4px;
     left: 4px;
-    background-color: rgb(227, 220, 88);
+    background-color: rgb(255 238 204);
     border-radius: 100px;
     transition: 0.3s;
 }
