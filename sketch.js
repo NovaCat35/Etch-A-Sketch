@@ -142,7 +142,7 @@ function startSketch() {
     createSquares(numSquares);
     setGridXX(row, column);
 
-    // Sets grid to intially listen for drag/mouseover event and change color base on selectedBtn
+    // Sets grid to initially listen for drag/mouseover event and change color base on selectedBtn
     let squares = document.querySelectorAll('.square');
     squares.forEach(square => square.addEventListener('mouseover', changeColor));
 
