@@ -8,7 +8,7 @@ let row = 16;
 let column = 16;
 let color = colorChoice.value;
 
-// Setup for slider's range value and Grid Size
+// Setup for SLIDER's range value and Grid Size
 gridSize.innerHTML = `${slider.value} x ${slider.value}`;
 slider.addEventListener('input', () => {
     gridSize.innerHTML = `${slider.value} x ${slider.value}`;
@@ -17,7 +17,7 @@ slider.addEventListener('input', () => {
     startSketch();
 });
 
-// Color, Btn Selected, and Eraser setup
+// Color/Rainbow/Warm/Cool Btn Selected, and Eraser setup
 let colorModeBtn = document.querySelector('.colorModeBtn');
 let rainbowBtn = document.querySelector('.rainbowBtn');
 let warmBtn = document.querySelector('.warmBtn');
@@ -39,16 +39,28 @@ buttons.forEach(btn => btn.addEventListener('click', function(event) {
         btn.classList.add('active');
     } else if (clickBtn == "clearBtn") {
         clearGrid();
+        // keep the current selectedBtn to show "active" css selector, except for eraser
         if(btnSelected != "eraser"){
             eval(btnSelected).classList.add('active');
         }
     } else {
+        // btnSelected is Eraser, no need to 'active' it, just play a shaking animation
         eraser.style.animation = "shake2 .5s forwards";
         btnSelected = clickBtn;
     }
 }));
 
+// Keep track of toggleState & mouseDown event
+let mouseDown = false
+let toggleSwitch = false
+document.body.onmousedown = () => (mouseDown = true)
+document.body.onmouseup = () => (mouseDown = false)
+
 function changeColor(e) {
+    if(toggleSwitch && e.type === 'mouseover' && !mouseDown) {
+        return
+    }
+
     switch(btnSelected) {
         case 'colorModeBtn':
             color = colorChoice.value;
@@ -73,6 +85,7 @@ function changeColor(e) {
             e.target.style.backgroundColor = color;
     }
 }
+
 function generateRainbow() {
     // Generate random HEX value
     let randomColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
@@ -95,10 +108,10 @@ function generateCool() {
     return hsl2;
 }
 
-const collection = GRID_CONTAINER.children;
+const gridCollection = GRID_CONTAINER.children;
 function clearGrid() {
-    for(let i = 0; i < collection.length; i++) {
-        collection[i].style.backgroundColor = '#f5f5f5';
+    for(let i = 0; i < gridCollection.length; i++) {
+        gridCollection[i].style.backgroundColor = '#f5f5f5';
     }
 }
 
@@ -129,9 +142,30 @@ function startSketch() {
     createSquares(numSquares);
     setGridXX(row, column);
 
-    // Listens to user's mouse hover over squares & change the background color base on selected button
+    // Sets grid to intially listen for drag/mouseover event and change color base on selectedBtn
     let squares = document.querySelectorAll('.square');
     squares.forEach(square => square.addEventListener('mouseover', changeColor));
+
+    // TOGGLE SWITCH setup for different event conditions (HOVER/MANUAL)
+    let checkbox = document.querySelector("input[type=checkbox]");
+
+    checkbox.addEventListener('change', function() {
+        if(this.checked) {
+            squares.forEach(function(square) {
+                // implement click/drag
+                toggleSwitch = true;
+                square.addEventListener('mousedown', changeColor);
+
+            })
+            console.log("Checkbox is checked..");
+        } else {
+            squares.forEach(function(square) {
+                toggleSwitch = false;
+                square.removeEventListener('mousedown', changeColor);
+            })
+            console.log("Checkbox is off..");
+        }
+    });
 }
 
 startSketch();
