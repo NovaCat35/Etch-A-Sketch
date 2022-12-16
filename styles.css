@@ -4,6 +4,9 @@
 
 html, body {
     margin: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    font-family: 'Cabin Sketch', cursive;
 }
 
 main {
@@ -36,14 +39,15 @@ header h1{
     font-family: 'Lily Script One', cursive;
     /* font-family: 'Monoton', cursive; */
     /* font-family: 'Special Elite', cursive; */
-    /* font-family: 'Ewert', cursive; */
     font-weight: bold;
+    text-shadow: 1px 1px 3px rgb(112, 64, 0),1px 1px 10px rgb(237, 179, 104);
     color: rgb(251, 193, 18);
     font-size: 3.3em;
     margin: 0;
 }
 .colorChoices {
-    background-color: rgb(203, 207, 235);
+    background-color: rgb(208 206 255);
+    box-shadow: 0px 0px 5px 5px rgb(124, 141, 224),0px 0px 10px 5px rgb(124, 141, 224),0px 0px 30px 5px rgb(124, 141, 224);;
     border-radius: 15px;
     height: 35em;
     width: 15em;
@@ -76,6 +80,8 @@ header h1{
 
 /***** BUTTONS *****/
 button {
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 14px;
     width: 10em;
     padding: .5em;
     border: 1px solid black;
@@ -97,7 +103,7 @@ button:active {
     transform: translateY(10px);
 }  
 .clearBtn {
-    background-color: #0ba2c4;
+    background-color: #2487d3;
     color: rgb(255, 237, 205);
     position: absolute;
     left: 85%;
@@ -154,6 +160,7 @@ button:active {
     background-color: rgb(227, 61, 61);
     border-bottom: none;
     border-radius: 1.5em;
+    box-shadow: 1px 1px 3.5px 1.5px rgb(155, 58, 58);
 }
 .boardBottom {
     position: relative;
@@ -213,12 +220,17 @@ button:active {
 }
 
 /***** TOGGLE SWITCH *****/
+label#manual {
+    position: absolute;
+    left: 27px;
+    top: 13px;
+}
 .switch {
     position: absolute;
     left: 1em;
     top: 35px;
-    width: 70px;
-    height: 30px;
+    width: 75px;
+    height: 35px;
     /* background:rgb(251, 193, 18); */
 }
 input[type=checkbox] {
@@ -232,28 +244,51 @@ input[type=checkbox] {
     left: 0;
     right: 0;
     bottom: 0;
-    background:#6b9edd;
+    background:#488db3;
     border-radius: 90px;
 }
 .slideKnob:before {
     position: absolute;
     content: '';
-    height: 22px;
-    width: 22px;
-    top: 4px;
+    height: 23px;
+    width: 23px;
+    top: 6px;
     left: 4px;
     background-color: rgb(255 238 204);
     border-radius: 100px;
     transition: 0.3s;
 }
+.on {
+    display: none;
+    transform: translate(-130%,-50%);
+}
+.off {
+    transform: translate(10%,-50%);
+}
+.on, .off {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 10px;
+    font-family: Verdana, sans-serif;
+    transition: 2s;
+}
+input[type=checkbox]:checked + .slideKnob .on {
+    display: block;
+}
+input[type=checkbox]:checked + .slideKnob .off {
+    display: none;
+}
 input[type=checkbox]:checked + .slideKnob {
-    background-color: #0094f0;
+    background-color: #128cd8;
 }
 input[type=checkbox]:checked + .slideKnob:before {
     left: 22px;
     transform: translateX(100%);
 }
 
+/***** FOOTER *****/
 footer {
     display: flex;
     justify-content: center;
@@ -261,7 +296,7 @@ footer {
     gap: 20px;
     color: white;
     font-size: 18px;
-    background-color: rgb(23, 22, 22);
+    background-color: rgb(31, 76, 114);
     padding: .6em;
 }
 footer img {
@@ -273,6 +308,8 @@ footer img {
 footer img:hover {
     transform: rotate(360deg);
 }
+
+/* ANIMATION */
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
     10% { transform: translate(-1px, -2px) rotate(-1deg); }

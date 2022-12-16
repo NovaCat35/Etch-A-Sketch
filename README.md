@@ -1,6 +1,6 @@
 # Pixel Sketch App (Etch-a-Sketch)
 
-Etch-a-Sketch created using HTML/CSS and JS. This project further dives into DOM manipulation, grid templates, and other functionalities such as eventListeners. Some of the functionalities of this project is noted below:
+Welcome to my Etch-a-Sketch! This project is created using HTML/CSS and JS to further explore DOM manipulation, grid templates, and more. Some of the functionalities of this project is noted below:
 
 COLOR SECTION
 - Color Mode [DONE]
@@ -14,4 +14,9 @@ TOOLS
 - Clear [DONE]
 
 Other utilities
-- Responsive
+- Responsive [TO DO]
+
+TO DO 
+- [ ] responsive
+- [ ] Darken color and shades?
+
