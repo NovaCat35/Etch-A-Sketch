@@ -3,7 +3,7 @@ let slider = document.querySelector('.slider');
 let gridSize = document.querySelector('.gridSize');
 let colorChoice = document.querySelector('#colorPicker');
 
-// initial setup
+// initial GRID setup
 let row = 16;
 let column = 16;
 let color = colorChoice.value;

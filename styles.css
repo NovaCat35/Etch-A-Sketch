@@ -18,6 +18,7 @@ main {
 }
 
 .mainContent {
+    position: relative;
     display: flex;
 }
 
@@ -44,6 +45,9 @@ header h1{
     color: rgb(251, 193, 18);
     font-size: 3.3em;
     margin: 0;
+}
+.header2{
+    display: none;
 }
 .colorChoices {
     background-color: rgb(208 206 255);
@@ -328,4 +332,104 @@ footer img:hover {
     0%, 30%, 60%, 90% { transform: translateX(-5px);}
     10%, 40%, 70%, 100% { transform: translateX(1px);}
     20%, 50%, 80% { transform: translateX(5px);}
+}
+
+/* Adjust For smaller screen */
+@media screen and (max-width: 1020px) {
+    .header1 {
+        display: none;
+    }
+    .header2 {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 310px;
+    }
+    .mainContent {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .board {
+        margin-top: 6em;
+    }
+}
+
+/* MOBILE */
+@media screen and (max-width: 620px) {
+    .gridContainer {
+        width: 400px;
+        height: 400px;
+    }
+    .board {
+        height: 30em;
+        margin-bottom: 0;
+    }
+    .switch {
+        display: none;
+    }
+    #manual {
+        display: none;
+    }
+    .boardBottom {
+        padding-left: 30px;
+        justify-content: start;
+    }
+    .toolBox {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .gridContainer {
+        width: 325px;
+        height: 325px;
+    }
+    .board {
+        border: 1em solid rgb(227, 61, 61);
+        border-left: 0em solid rgb(227, 61, 61);
+        border-right: 0em solid rgb(227, 61, 61);
+        height: 26em;
+        border-bottom: none;
+        width: 98%;
+    }
+    .boardBottom {
+        padding-left: 20px;
+    }
+    .slideContainer {
+        width: 16em;
+    }
+    .clearBtn {
+        left: 80%;
+    }
+}
+
+@media screen and (max-width: 365px) {
+    .header2 {
+        font-size: 10px;
+        text-align: center;
+    }
+    .gridContainer {
+        width: 250px;
+        height: 250px;
+    }
+    .board {
+        margin-top: 4em;
+        border: 1em solid rgb(227, 61, 61);
+        height: 20em;
+        border-bottom: none;
+        width: 75%;
+    }
+    .boardBottom {
+        padding-left: 20px;
+    }
+    .slideContainer {
+        width: 10em;
+    }
+    .clearBtn {
+        left: 80%;
+        height: 47px;
+        width: 47px;
+    }
 }
