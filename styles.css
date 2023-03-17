@@ -61,7 +61,8 @@ header h1{
     font-weight: bold;
     text-shadow: 1px 1px 3px rgb(112, 64, 0),1px 1px 10px rgb(237, 179, 104);
     color: rgb(251, 193, 18);
-    font-size: 3.3em;
+    font-size: 3.3rem;
+    text-align: center;
     margin: 0;
 }
 .header2{
@@ -71,16 +72,16 @@ header h1{
     background-color: rgb(208 206 255);
     box-shadow: 0px 0px 5px 5px rgb(124, 141, 224),0px 0px 10px 5px rgb(124, 141, 224),0px 0px 30px 5px rgb(124, 141, 224);;
     border-radius: 15px;
-    height: 35em;
-    width: 15em;
-    margin: 4em;
-    margin-top: 2em;
-    margin-bottom: 3em;
-    padding-top: 2.5em;
+    height: 35rem;
+    width: 15rem;
+    margin: 4rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    padding-top: 2.5rem;
     display: flex;
     align-items: center ;
     flex-direction: column;
-    gap: 2em;
+    gap: 2rem;
 }
 .colorModeContainer {
     display: flex;

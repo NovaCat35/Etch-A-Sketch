@@ -15,6 +15,7 @@ slider.addEventListener('input', () => {
     row = slider.value;
     column = slider.value;
     startSketch();
+    checkToggleCondition();
 });
 
 // Color/Rainbow/Warm/Cool Btn Selected, and Eraser setup
@@ -51,12 +52,13 @@ buttons.forEach(btn => btn.addEventListener('click', function(event) {
 }));
 
 // Keep track of toggleState & mouseDown event
-let mouseDown = false
-let toggleSwitch = false
-document.body.onmousedown = () => (mouseDown = true)
-document.body.onmouseup = () => (mouseDown = false)
+let mouseDown = false;
+let toggleSwitch = false;
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false);
 
 function changeColor(e) {
+    // manual toggle: await user clicks
     if(toggleSwitch && e.type === 'mouseover' && !mouseDown) {
         return
     }
@@ -146,11 +148,13 @@ function startSketch() {
     let squares = document.querySelectorAll('.square');
     squares.forEach(square => square.addEventListener('mouseover', changeColor));
 
-    // TOGGLE SWITCH setup for different event conditions (HOVER/MANUAL)
+    // TOGGLE SWITCH setup for (HOVER/MANUAL)
     let checkbox = document.querySelector("input[type=checkbox]");
+    checkbox.addEventListener('change', checkToggleCondition);
+    checkToggleCondition(); // this is if grid changes, we still want to check up on toggle
 
-    checkbox.addEventListener('change', function() {
-        if(this.checked) {
+    function checkToggleCondition() {
+        if(checkbox.checked) {
             squares.forEach(function(square) {
                 // implement click/drag
                 toggleSwitch = true;
@@ -165,7 +169,7 @@ function startSketch() {
             })
             console.log("Checkbox is off..");
         }
-    });
+    }
 }
 
 startSketch();
