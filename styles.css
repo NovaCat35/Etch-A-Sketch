@@ -103,6 +103,7 @@ header h1{
 
 /***** BUTTONS *****/
 button {
+    color: black;
     font-family: 'Cabin Sketch', cursive;
     font-size: 14px;
     width: 10em;
